@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonaris – Die drei Säulen unserer Leistung</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0C121A;
+    color: #A0B9D7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px;
+  }
+
+  .logo-bar {
+    position: fixed;
+    top: 28px;
+    left: 32px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+  }
+  .logo-text {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #C8DCF0;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 64px;
+    max-width: 760px;
+    margin-top: 32px;
+  }
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #6E91B4;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #C8DCF0;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #A0B9D7;
+    max-width: 620px;
+    margin: 0 auto;
+    opacity: 0.8;
+  }
+  .anchor {
+    display: inline-block;
+    margin-top: 28px;
+    background: rgba(110,145,180,0.06);
+    border: 1px solid rgba(110,145,180,0.2);
+    border-radius: 12px;
+    padding: 16px 28px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #B4C8E1;
+    line-height: 1.6;
+    max-width: 680px;
+    text-align: center;
+  }
+
+  .columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 56px;
+  }
+  .card {
+    background: #151D28;
+    border: 1px solid rgba(110,145,180,0.12);
+    border-radius: 20px;
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 20px 20px 0 0;
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 160px; height: 160px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .card-1 { --accent: #6E91B4; --accent-soft: rgba(110,145,180,0.08); }
+  .card-2 { --accent: #3B82F6; --accent-soft: rgba(59,130,246,0.08); }
+  .card-3 { --accent: #AA7D55; --accent-soft: rgba(170,125,85,0.08); }
+
+  .card-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(110,145,180,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .card-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+  .card-number {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #C8DCF0;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .card-subtitle {
+    font-size: 13px;
+    color: #8CA0BE;
+    margin-bottom: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .divider {
+    height: 1px;
+    background: rgba(110,145,180,0.1);
+    margin-bottom: 24px;
+  }
+  .items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: #A0B9D7;
+    line-height: 1.5;
+  }
+  .items li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  .examples-section {
+    max-width: 1100px;
+    width: 100%;
+    margin-bottom: 56px;
+  }
+  .examples-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .examples-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #C8DCF0;
+    margin-bottom: 8px;
+  }
+  .examples-header p {
+    font-size: 14px;
+    color: #8CA0BE;
+  }
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .example-card {
+    background: #151D28;
+    border: 1px solid rgba(110,145,180,0.12);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.3s ease;
+  }
+  .example-card:hover {
+    border-color: rgba(110,145,180,0.3);
+  }
+  .example-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .example-icon svg {
+    width: 48px;
+    height: 48px;
+  }
+  .example-content h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #C8DCF0;
+    margin-bottom: 6px;
+  }
+  .example-content p {
+    font-size: 13px;
+    color: #8CA0BE;
+    line-height: 1.6;
+  }
+  .example-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: rgba(110,145,180,0.08);
+    color: #6E91B4;
+    border: 1px solid rgba(110,145,180,0.15);
+  }
+
+  .footer-note {
+    text-align: center;
+    max-width: 620px;
+    font-size: 13px;
+    color: #8CA0BE;
+    line-height: 1.7;
+    border-top: 1px solid rgba(110,145,180,0.1);
+    padding-top: 32px;
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+  .logo-footer {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(110,145,180,0.25);
+    margin-top: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .columns { grid-template-columns: 1fr; }
+    .examples-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="logo-bar">
+  <svg class="logo-mark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="60" r="40" fill="rgba(110,145,180,0.04)"/>
+    <circle cx="60" cy="30" r="3" fill="rgba(110,145,180,0.6)"/>
+    <circle cx="85" cy="48" r="2.5" fill="rgba(110,145,180,0.5)"/>
+    <circle cx="80" cy="78" r="2.5" fill="rgba(170,125,85,0.45)"/>
+    <circle cx="40" cy="78" r="2.5" fill="rgba(170,125,85,0.5)"/>
+    <circle cx="35" cy="48" r="2.5" fill="rgba(110,145,180,0.45)"/>
+    <circle cx="60" cy="60" r="2" fill="rgba(110,145,180,0.55)"/>
+    <line x1="60" y1="30" x2="85" y2="48" stroke="rgba(110,145,180,0.15)" stroke-width="0.6"/>
+    <line x1="85" y1="48" x2="80" y2="78" stroke="rgba(110,145,180,0.12)" stroke-width="0.6"/>
+    <line x1="80" y1="78" x2="40" y2="78" stroke="rgba(170,125,85,0.12)" stroke-width="0.6"/>
+    <line x1="40" y1="78" x2="35" y2="48" stroke="rgba(170,125,85,0.12)" stroke-width="0.6"/>
+    <line x1="35" y1="48" x2="60" y2="30" stroke="rgba(110,145,180,0.15)" stroke-width="0.6"/>
+    <line x1="60" y1="60" x2="60" y2="30" stroke="rgba(110,145,180,0.08)" stroke-width="0.4"/>
+    <line x1="60" y1="60" x2="85" y2="48" stroke="rgba(110,145,180,0.08)" stroke-width="0.4"/>
+    <line x1="60" y1="60" x2="35" y2="48" stroke="rgba(110,145,180,0.08)" stroke-width="0.4"/>
+    <circle cx="60" cy="30" r="3" fill="rgba(110,145,180,0.6)">
+      <animate attributeName="r" values="3;3.5;3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+  <span class="logo-text">Sonaris</span>
+</div>
+
+<div class="header">
+  <div class="eyebrow">Sales Sonaris · KI-Begleitung</div>
+  <h1>Was die monatliche Pauschale umfasst</h1>
+  <p class="subtitle">
+    Die Pauschale sichert dir ein dediziertes Team, das sich kontinuierlich in deine Prozesse hineindenkt, Loesungen entwickelt und dein Team befaehigt – in drei gleichwertigen Leistungsbereichen.
+  </p>
+  <div class="anchor">
+    Die monatliche Pauschale ist ein Retainer fuer ein Buendel an Leistungen –<br>
+    die gemeinsamen Sessions sind der sichtbare Teil davon.
+  </div>
+</div>
+
+<div class="columns">
+
+  <div class="card card-1">
+    <div class="card-icon">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="40" fill="rgba(110,145,180,0.04)"/>
+        <circle cx="65" cy="28" r="2" fill="rgba(110,145,180,0.5)"/>
+        <circle cx="78" cy="35" r="2" fill="rgba(110,145,180,0.45)"/>
+        <circle cx="85" cy="50" r="2" fill="rgba(110,145,180,0.4)"/>
+        <circle cx="82" cy="65" r="2" fill="rgba(110,145,180,0.4)"/>
+        <circle cx="72" cy="78" r="2" fill="rgba(110,145,180,0.35)"/>
+        <circle cx="60" cy="85" r="2" fill="rgba(110,145,180,0.35)"/>
+        <path d="M65,28 Q82,30 85,50 Q86,68 72,78 Q65,83 60,85" fill="none" stroke="rgba(110,145,180,0.15)" stroke-width="0.6"/>
+      </svg>
+    </div>
+    <div class="card-number">Saeule 01</div>
+    <div class="card-title">Live-Sessions</div>
+    <div class="card-subtitle">Gemeinsame Arbeit in Echtzeit – strukturiert und zielorientiert</div>
+    <div class="divider"></div>
+    <ul class="items">
+      <li>Regelmaessige Gruppensessions, in der Regel woechentlich – bei Bedarf auch als kompakte Doppelsession</li>
+      <li>Individuelle 1:1-Sessions fuer spezifische Use Cases oder persoenliche Begleitung</li>
+      <li>Kommunikation zwischen den Sessions per E-Mail – fuer kurze Fragen, Feedback und Abstimmungen</li>
+      <li>Strukturierte Reviews am Ende jedes 30-Tage-Zyklus</li>
+    </ul>
+  </div>
+
+  <div class="card card-2">
+    <div class="card-icon">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="40" fill="rgba(110,145,180,0.04)"/>
+        <circle cx="38" cy="38" r="2.5" fill="rgba(110,145,180,0.5)"/>
+        <circle cx="82" cy="38" r="2.5" fill="rgba(110,145,180,0.5)"/>
+        <circle cx="82" cy="82" r="2.5" fill="rgba(110,145,180,0.45)"/>
+        <circle cx="38" cy="82" r="2.5" fill="rgba(110,145,180,0.45)"/>
+        <line x1="38" y1="38" x2="82" y2="38" stroke="rgba(110,145,180,0.25)" stroke-width="0.8"/>
+        <line x1="82" y1="38" x2="82" y2="82" stroke="rgba(110,145,180,0.2)" stroke-width="0.8"/>
+        <line x1="82" y1="82" x2="38" y2="82" stroke="rgba(110,145,180,0.2)" stroke-width="0.8"/>
+        <line x1="38" y1="82" x2="38" y2="38" stroke="rgba(110,145,180,0.2)" stroke-width="0.8"/>
+        <circle cx="60" cy="60" r="1.5" fill="rgba(110,145,180,0.5)"/>
+      </svg>
+    </div>
+    <div class="card-number">Saeule 02</div>
+    <div class="card-title">Entwicklung und Bau</div>
+    <div class="card-subtitle">Die unsichtbare Arbeit – und oft der groesste Werttreiber</div>
+    <div class="divider"></div>
+    <ul class="items">
+      <li>Konzeption, Bau und Iteration von KI-Agenten – abgestimmt auf eure Prozesse</li>
+      <li>Design und Implementierung von automatisierten Workflows</li>
+      <li>Aufbau eines Wissenslayers mit RAG-Anbindung an eure Dokumente und Daten</li>
+      <li>Testing, Qualitaetssicherung und kontinuierliche Verbesserung</li>
+      <li>Dokumentation aller entwickelten Systeme zur Nachnutzung</li>
+    </ul>
+  </div>
+
+  <div class="card card-3">
+    <div class="card-icon">
+      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="40" fill="rgba(110,145,180,0.04)"/>
+        <circle cx="60" cy="25" r="2.5" fill="rgba(110,145,180,0.55)"/>
+        <circle cx="95" cy="60" r="2.5" fill="rgba(110,145,180,0.5)"/>
+        <circle cx="60" cy="95" r="2.5" fill="rgba(110,145,180,0.45)"/>
+        <circle cx="25" cy="60" r="2.5" fill="rgba(110,145,180,0.5)"/>
+        <line x1="60" y1="25" x2="60" y2="95" stroke="rgba(110,145,180,0.12)" stroke-width="0.5"/>
+        <line x1="25" y1="60" x2="95" y2="60" stroke="rgba(110,145,180,0.12)" stroke-width="0.5"/>
+        <circle cx="60" cy="60" r="1.5" fill="rgba(110,145,180,0.55)"/>
+      </svg>
+    </div>
+    <div class="card-number">Saeule 03</div>
+    <div class="card-title">Strategische Denkarbeit</div>
+    <div class="card-subtitle">Das Hineindenken in euren Kontext – vor, zwischen und nach den Sessions</div>
+    <div class="divider"></div>
+    <ul class="items">
+      <li>Evaluierung und Priorisierung von Use Cases gemeinsam mit euch</li>
+      <li>Analyse eurer Geschaeftsprozesse und Identifikation von Automatisierungspotenzialen</li>
+      <li>Governance-Strukturen und DSGVO-konforme Umsetzung</li>
+      <li>Strategisches Sparring und kreative Loesungsentwicklung</li>
+      <li>Aufbau von KI-Kompetenz – vom ersten Einstieg zur souveraenen Nutzung</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="examples-section">
+  <div class="examples-header">
+    <h2>Was zwischen den Sessions entsteht – Beispiele aus der Praxis</h2>
+    <p>Jedes dieser Beispiele steht fuer mehrere Stunden Konzeption, Entwicklung, Testing und Iteration.</p>
+  </div>
+  <div class="examples-grid">
+
+    <div class="example-card">
+      <div class="example-icon">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="40" fill="rgba(110,145,180,0.03)"/>
+          <circle cx="20" cy="35" r="1.5" fill="rgba(110,145,180,0.3)"/>
+          <circle cx="20" cy="55" r="1.5" fill="rgba(110,145,180,0.35)"/>
+          <circle cx="20" cy="75" r="1.5" fill="rgba(110,145,180,0.3)"/>
+          <circle cx="60" cy="58" r="2.5" fill="rgba(225,185,145,0.5)"/>
+          <circle cx="100" cy="58" r="2" fill="rgba(110,180,140,0.4)"/>
+        </svg>
+      </div>
+      <div class="example-content">
+        <h3>Darlehenssalden- und Finanz-Assistent</h3>
+        <p>Ein Agent, der aus Rohdaten strukturierte Auswertungen erstellt und Abstimmungsprozesse automatisiert.</p>
+        <div class="example-tags">
+          <span class="tag">Konzeption</span>
+          <span class="tag">Prompt-Engineering</span>
+          <span class="tag">Testlaeufe</span>
+          <span class="tag">Iteration</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <div class="example-icon">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="40" fill="rgba(110,145,180,0.03)"/>
+          <circle cx="50" cy="50" r="20" fill="none" stroke="rgba(110,145,180,0.25)" stroke-width="1"/>
+          <line x1="64" y1="64" x2="88" y2="88" stroke="rgba(110,145,180,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="42" cy="42" r="1.5" fill="rgba(110,145,180,0.35)"/>
+          <circle cx="55" cy="45" r="1.5" fill="rgba(110,145,180,0.4)"/>
+          <circle cx="48" cy="58" r="1.5" fill="rgba(110,145,180,0.3)"/>
+        </svg>
+      </div>
+      <div class="example-content">
+        <h3>Vertragsanalyse-Agent</h3>
+        <p>Automatisierte Pruefung von Vertragsunterlagen gegen definierte Standards und Checklisten.</p>
+        <div class="example-tags">
+          <span class="tag">Regelwerk-Definition</span>
+          <span class="tag">Agent-Bau</span>
+          <span class="tag">Testing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <div class="example-icon">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="40" fill="rgba(160,165,160,0.03)"/>
+          <circle cx="60" cy="60" r="2" fill="rgba(225,185,145,0.5)"/>
+          <circle cx="60" cy="60" r="18" fill="none" stroke="rgba(110,145,180,0.1)" stroke-width="0.5"/>
+          <circle cx="60" cy="42" r="1.5" fill="rgba(110,145,180,0.35)"/>
+          <circle cx="78" cy="60" r="1.5" fill="rgba(110,145,180,0.3)"/>
+          <circle cx="60" cy="78" r="1.5" fill="rgba(225,185,145,0.3)"/>
+          <circle cx="42" cy="60" r="1.5" fill="rgba(225,185,145,0.35)"/>
+        </svg>
+      </div>
+      <div class="example-content">
+        <h3>Reporting-Workflow</h3>
+        <p>Automatisierte Erstellung von Berichten und Zusammenfassungen aus bestehenden Datenquellen.</p>
+        <div class="example-tags">
+          <span class="tag">Workflow-Design</span>
+          <span class="tag">Anbindung</span>
+          <span class="tag">Feintuning</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-card">
+      <div class="example-icon">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="42" fill="rgba(110,145,180,0.04)"/>
+          <rect x="25" y="45" width="70" height="22" rx="4" fill="rgba(110,145,180,0.06)" stroke="rgba(110,145,180,0.15)" stroke-width="0.5"/>
+          <circle cx="38" cy="56" r="1.5" fill="rgba(110,145,180,0.3)"/>
+          <circle cx="52" cy="56" r="1.5" fill="rgba(110,145,180,0.35)"/>
+          <circle cx="68" cy="56" r="1.5" fill="rgba(110,145,180,0.3)"/>
+          <circle cx="82" cy="56" r="1.5" fill="rgba(110,145,180,0.25)"/>
+          <rect x="22" y="72" width="76" height="24" rx="5" fill="rgba(110,145,180,0.08)" stroke="rgba(110,145,180,0.25)" stroke-width="0.6"/>
+          <circle cx="38" cy="84" r="2" fill="rgba(110,145,180,0.45)"/>
+          <circle cx="55" cy="84" r="2" fill="rgba(110,145,180,0.5)"/>
+          <circle cx="72" cy="84" r="2" fill="rgba(225,185,145,0.4)"/>
+        </svg>
+      </div>
+      <div class="example-content">
+        <h3>Wissensdatenbank mit RAG-Anbindung</h3>
+        <p>Aufbau einer durchsuchbaren Wissensbasis aus Prozessdokumenten, Handbuechern und internen Unterlagen.</p>
+        <div class="example-tags">
+          <span class="tag">Datenstrukturierung</span>
+          <span class="tag">Upload-Logik</span>
+          <span class="tag">Zugriffsrechte</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer-note">
+  Die Beispiele sind Illustrationen typischer Leistungen. Konkrete Agenten und Workflows werden gemeinsam mit dir auf Basis deiner Prozesse und Ziele entwickelt und priorisiert.
+</div>
+
+<div class="logo-footer">Sales Sonaris</div>
+
+</body>
+</html>
